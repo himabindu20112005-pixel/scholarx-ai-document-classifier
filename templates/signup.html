@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row justify-content-center py-5">
+    <div class="col-md-5">
+        <div class="glass-card p-4 p-sm-5 border-2">
+            <div class="text-center mb-4">
+                <i class="bi bi-person-plus-fill text-gradient display-5 mb-2 d-inline-block"></i>
+                <h2 class="text-white">Register Account</h2>
+                <p class="text-muted small">Generate isolated credential security hashes</p>
+            </div>
+            <form method="POST">
+                <div class="mb-3">
+                    <label class="form-label text-white-50 small font-tech">CHOSEN ID HANDLER</label>
+                    <input type="text" name="username" class="form-control bg-dark border-secondary text-white p-3 rounded-3" style="--bs-border-opacity: 0.2" required placeholder="e.g. developer">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label text-white-50 small font-tech">EMAIL ADDRESS</label>
+                    <input type="email" name="email" class="form-control bg-dark border-secondary text-white p-3 rounded-3" style="--bs-border-opacity: 0.2" required placeholder="name@domain.com">
+                </div>
+                <div class="mb-4">
+                    <label class="form-label text-white-50 small font-tech">SECURE ACCESS PASSWORD</label>
+                    <input type="password" name="password" class="form-control bg-dark border-secondary text-white p-3 rounded-3" style="--bs-border-opacity: 0.2" required placeholder="••••••••">
+                </div>
+                <button type="submit" class="btn btn-gradient btn-lg w-100 py-3 rounded-3 mb-3">Provision Sandbox Identity</button>
+            </form>
+            <div class="text-center text-muted small">
+                Profile key allocated? <a href="{{ url_for('login') }}" class="text-info text-decoration-none">Direct sign in node →</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

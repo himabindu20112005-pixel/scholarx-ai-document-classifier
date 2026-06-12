@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="glass-card p-4">
+    <h4 class="mb-4 text-white font-tech fw-bold">Historical Application Audits</h4>
+    <div class="table-responsive">
+        <table class="table table-hover align-middle table-dark table-borderless m-0">
+            <thead>
+                <tr class="text-muted small border-bottom border-secondary border-opacity-25 font-tech">
+                    <th class="pb-3">TIMESTAMP</th>
+                    <th class="pb-3">DOCUMENT ARRAY CONTENT PREVIEW</th>
+                    <th class="pb-3">PIPELINE VERDICT</th>
+                    <th class="pb-3 text-end">CONFIDENCE</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in records %}
+                <tr class="border-bottom border-secondary border-opacity-10">
+                    <td class="text-nowrap small font-monospace text-white-50 py-3">{{ row.timestamp }}</td>
+                    <td><div class="text-truncate text-muted" style="max-width: 320px;">{{ row.doc_text }}</div></td>
+                    <td><span class="badge bg-info text-dark font-tech">{{ row.prediction }}</span></td>
+                    <td class="text-end text-success font-tech font-monospace fw-bold">{{ row.confidence }}%</td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="4" class="text-center text-muted py-5">No operational server transaction traces recovered inside current session framework.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

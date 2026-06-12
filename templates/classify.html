@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% block content %}
+{% set width_percentage = result.confidence if result else '0%' %}
+{% set clean_value = result.confidence | replace('%', '') if result else '0' %}
+
+<div class="mb-4">
+    <h2 class="text-white fw-bold">Statistical Inference Workspace</h2>
+    <p class="text-muted">Pass your unstructured string array context payload parameters into the vector pipeline below.</p>
+</div>
+
+<div class="row g-4">
+    <div class="col-lg-7">
+        <div class="glass-card p-4 h-100">
+            <form method="POST">
+                <div class="mb-3">
+                    <label class="form-label text-white-50 font-tech small">RAW DOCUMENT CHARACTER TRANSLIPS</label>
+                    <textarea name="doc_text" class="form-control bg-dark text-light font-monospace border-secondary p-3 rounded-3" style="--bs-border-opacity: 0.15;" rows="10" placeholder="Paste structural invoice parameters, target worker experience files, or educational abstract details right here..." required></textarea>
+                </div>
+                <button type="submit" class="btn btn-gradient btn-lg w-100 py-3 rounded-3 font-tech">
+                    <i class="bi bi-terminal-fill me-1"></i> RUN REALTIME CLASSIFIER MODEL
+                </button>
+            </form>
+        </div>
+    </div>
+    
+    <div class="col-lg-5">
+        <div class="glass-card p-4 h-100 d-flex flex-column justify-content-between border-2 position-relative overflow-hidden" style="min-height: 340px;">
+            <div class="position-absolute top-0 start-0 w-100 h-100 opacity-10" style="background: radial-gradient(circle at 50% 30%, #06b6d4 0%, transparent 70%); pointer-events: none;"></div>
+            
+            {% if result %}
+                <div class="position-relative z-1">
+                    <span class="badge bg-success bg-opacity-10 text-success border border-success rounded-pill px-3 py-1 font-tech small mb-3">INFERENCE LOG OK</span>
+                    <h5 class="text-muted font-tech small mb-1">EVALUATED STRATEGY PATH:</h5>
+                    <h1 class="display-4 fw-bold text-white mb-4">{{ result.prediction }}</h1>
+                </div>
+                
+                <div class="border-top border-secondary border-opacity-25 pt-3 position-relative z-1">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                        <span class="text-white-50 small">Pipeline Verification Accuracy</span>
+                        <span class="text-info font-tech fw-bold">{{ width_percentage }}</span>
+                    </div>
+                    <div class="progress bg-dark rounded-pill" style="height: 6px;">
+                        <div class="progress-bar bg-info rounded-pill" 
+                             role="progressbar" 
+                             style="width: {{ width_percentage }};" 
+                             aria-valuenow="{{ clean_value }}" 
+                             aria-valuemin="0" 
+                             aria-valuemax="100">
+                        </div>
+                    </div>
+                </div>
+            {% else %}
+                <div class="my-auto text-center p-4 position-relative z-1">
+                    <i class="bi bi-cpu-fill text-muted display-3 mb-3 d-block"></i>
+                    <h5 class="text-white-50">Awaiting Compute Pipeline Tasks</h5>
+                    <p class="text-muted small m-0">Input sequences verified against structural matrix weights will generate performance distribution metrics instantly here.</p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
