@@ -17,5 +17,4 @@ Technologies:
 Python, Flask, Scikit-Learn, SQLite, Bootstrap
 
 ## Live Link
-
-https://scholarx-ai-document-classifier-1.onrender.com
+https://scholarx-ai-document-classifier-4.onrender.com
